@@ -8,7 +8,7 @@
       <v-toolbar-title>Jitsi Keycloak</v-toolbar-title>
       <v-spacer></v-spacer>
       <v-img v-if="avatar" :src=avatar max-height="40" max-width="40" class="mx-2"></v-img>
-      <span>{{ profile.firstName }} {{ profile.lastName }}</span>
+      <span>{{ profile.username }}</span>
       <v-tooltip bottom>
         <template v-slot:activator="{ on }">
           <v-btn icon v-on:click="keycloak.logout({redirectUri: url})" v-on="on">
@@ -28,13 +28,8 @@
                 <v-form v-model="roomValid">
                   <v-row>
                     <v-col>
-                      <v-text-field label="First Name" :value="profile.firstName" disabled></v-text-field>
+                      <v-text-field label="Username" :value="profile.username" disabled></v-text-field>
                     </v-col>
-                    <v-col>
-                      <v-text-field label="Last Name" :value="profile.lastName" disabled></v-text-field>
-                    </v-col>
-                  </v-row>
-                  <v-row>
                     <v-col>
                       <v-text-field label="Email" :value="profile.email" disabled></v-text-field>
                     </v-col>

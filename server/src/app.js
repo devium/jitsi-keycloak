@@ -30,11 +30,11 @@ app.use(session({
   store: memoryStore
 }));
 
-const sign = (firstName, lastName, email, avatar, allowedRoom) => {
+const sign = (username, email, avatar, allowedRoom) => {
   return jwt.sign({
     "context": {
       "user": {
-        "name": firstName + " " + lastName,
+        "name": username,
         "email": email,
         "avatar": avatar
       }
@@ -61,7 +61,7 @@ app.get("/api/config", keycloak.protect(), (req, res) => {
 
   const profile = req.kauth.grant.access_token.content;
   return res.send(JSON.stringify({
-    token: sign(profile.given_name, profile.family_name, profile.email, avatar, "*"),
+    token: sign(profile.preferred_username, profile.email, avatar, "*"),
     jitsiUrl: JITSI_URL,
     defaultRoom: DEFAULT_ROOM
   }));
