@@ -26,17 +26,9 @@
               <v-card-title>Login</v-card-title>
               <v-card-text>
                 <v-form v-model="roomValid">
-                  <v-row>
-                    <v-col>
-                      <v-text-field label="Username" :value="profile.username" disabled></v-text-field>
-                    </v-col>
-                    <v-col>
-                      <v-text-field label="Email" :value="profile.email" disabled></v-text-field>
-                    </v-col>
-                    <v-col>
-                      <v-text-field label="Room" v-model="room" :rules="roomRules"></v-text-field>
-                    </v-col>
-                  </v-row>
+                  <v-text-field label="Username" :value="profile.username" disabled></v-text-field>
+                  <v-text-field label="Email" :value="profile.email" disabled></v-text-field>
+                  <v-text-field label="Room" v-model="room" :rules="roomRules"></v-text-field>
                   <v-btn color="primary" v-on:click="openJitsi" :disabled="!roomValid">Open Jitsi</v-btn>
                 </v-form>
               </v-card-text>
@@ -124,5 +116,10 @@ export default {
 <style>
 html {
   overflow-y: auto !important;
+}
+
+.v-card {
+  max-width: 400px !important;
+  margin: 32px auto 32px auto;
 }
 </style>
